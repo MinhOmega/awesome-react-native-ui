@@ -22,11 +22,14 @@ jobs:
           git remote add source https://github.com/mrpmohiburrahman/awesome-react-native-ui.git
           git fetch source --prune
 
-      - name: Rewrite authors for all branches except main
+      - name: Rewrite authors for all branches
         run: |
           for branch in $(git branch -r | grep source | grep -v '\->' | sed 's/source\///'); do
-            if [ "$branch" != "test" ]; then
-              git checkout -b $branch source/$branch
+            if [ "$branch" = "main" ]; then
+              git checkout main
+              git reset --hard source/main
+            else
+              git checkout -b $branch source/$branch || git checkout $branch
               git filter-branch --env-filter '
                 CORRECT_NAME="MinhOmega"
                 CORRECT_EMAIL="quang.minh@snaptec.co"
