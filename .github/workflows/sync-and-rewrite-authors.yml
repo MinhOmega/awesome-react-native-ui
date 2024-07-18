@@ -1,9 +1,9 @@
 name: Sync and Rewrite Authors
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: '0 12 * * *' # Runs at 12:00 PM UTC every day
-  workflow_dispatch: # Allows manual triggering of the workflow
+    - cron: '*/5 * * * *'
 
 jobs:
   sync:
@@ -13,13 +13,13 @@ jobs:
       - name: Checkout the target repository
         uses: actions/checkout@v2
         with:
-          repository: MinhOmega/awesome-react-native-ui-new
+          repository: MinhOmega/awesome-react-native-ui
           token: ${{ secrets.GH_TOKEN }}
           persist-credentials: false
 
       - name: Fetch all branches from source repository
         run: |
-          git remote add source https://github.com/mrpmohiburrahman/awesome-react-native-ui.git
+          git remote add source https://github.com/minhomega/awesome-react-native-ui.git
           git fetch source --prune
 
       - name: Rewrite authors for all branches
@@ -31,20 +31,20 @@ jobs:
             else
               git checkout -b $branch source/$branch || git checkout $branch
               git filter-branch --env-filter '
-                CORRECT_NAME="MinhOmega"
-                CORRECT_EMAIL="quang.minh@snaptec.co"
-                
-                if [ "$GIT_COMMITTER_EMAIL" != "$CORRECT_EMAIL" ]
-                then
+              CORRECT_NAME="MinhOmega"
+              CORRECT_EMAIL="quang.minh@snaptec.co"
+
+              if [ "$GIT_COMMITTER_EMAIL" != "$CORRECT_EMAIL" ]; then
                 export GIT_COMMITTER_NAME="$CORRECT_NAME"
                 export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
-                fi
-                if [ "$GIT_AUTHOR_EMAIL" != "$CORRECT_EMAIL" ]
-                then
+              fi
+              if [ "$GIT_AUTHOR_EMAIL" != "$CORRECT_EMAIL" ]; then
                 export GIT_AUTHOR_NAME="$CORRECT_NAME"
                 export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
-                fi
-              ' -f
+              fi
+            ' --msg-filter '
+              sed "/Co-authored-by:/d"
+            ' -f --tag-name-filter cat -- --branches --tags
             fi
           done
 
@@ -52,7 +52,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
         run: |
-          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/MinhOmega/awesome-react-native-ui-new
+          git remote set-url origin https://x-access-token:${GH_TOKEN}@github.com/MinhOmega/awesome-react-native-ui
           for branch in $(git branch -r | grep source | grep -v '\->' | sed 's/source\///'); do
             if [ "$branch" != "main" ]; then
               git checkout $branch

@@ -3,11 +3,11 @@ const { themes } = require("prism-react-renderer");
 module.exports = {
   title: "Awesome React Native UI",
   tagline: "Awesome React Native UI components made by community! 🚀",
-  url: "https://mrpmohiburrahman.github.io",
+  url: "https://minhomega.github.io",
   baseUrl: "/awesome-react-native-ui/",
   onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
-  organizationName: "mrpmohiburrahman",
+  organizationName: "minhomega",
   projectName: "react-native-bottom-sheet",
   favicon: "img/favicon.ico",
   themeConfig: {
@@ -17,9 +17,9 @@ module.exports = {
       hideOnScroll: false,
       items: [
         {
-          href: "https://github.com/mrpmohiburrahman/awesome-react-native-ui",
+          href: "https://github.com/minhomega/awesome-react-native-ui",
           position: "right",
-          html: '<a class="navbar__link" href="https://github.com/mrpmohiburrahman/awesome-react-native-ui" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Star Us on GitHub</a>',
+          html: '<a class="navbar__link" href="https://github.com/minhomega/awesome-react-native-ui" target="_blank" rel="noopener noreferrer"><i class="fas fa-star"></i> Star Us on GitHub</a>',
         },
       ],
     },
@@ -27,7 +27,7 @@ module.exports = {
       theme: themes.dracula,
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} <a rel="noreferrer" href="https://www.linkedin.com/in/mrpmohiburrahman/" target="_blank">MD. MOHIBUR RAHMAN</a>. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a rel="noreferrer" href="https://www.linkedin.com/in/minhomega/" target="_blank">Minh Vo Ngoc Quang</a>. Built with Docusaurus.`,
     },
   },
   presets: [

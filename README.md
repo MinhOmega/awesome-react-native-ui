@@ -11,7 +11,7 @@ Welcome to the Awesome React Native UI repository! This project showcases variou
 
 This repository collects various React Native animations and UI components shared by the community. You can explore, learn, and use these animations in your own projects.
 
-Visit our Docusaurus site to see all animations in action: [Awesome React Native UI](https://mrpmohiburrahman.github.io/awesome-react-native-ui/).
+Visit our Docusaurus site to see all animations in action: [Awesome React Native UI](https://minhomega.github.io/awesome-react-native-ui/).
 
 ## Contributing
 
