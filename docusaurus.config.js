@@ -27,7 +27,7 @@ module.exports = {
       theme: themes.dracula,
     },
     footer: {
-      copyright: `Copyright © ${new Date().getFullYear()} <a rel="noreferrer" href="https://www.linkedin.com/in/minhomega/" target="_blank">Minh Vo Ngoc Quang</a>. Built with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a rel="noreferrer" href="https://www.linkedin.com/in/minhvoomega/" target="_blank">Minh Vo Ngoc Quang</a>. Built with Docusaurus.`,
     },
   },
   presets: [
