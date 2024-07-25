@@ -19,7 +19,7 @@ jobs:
 
       - name: Fetch all branches from source repository
         run: |
-          git remote add source https://github.com/minhomega/awesome-react-native-ui.git
+          git remote add source https://github.com/mrpmohiburrahman/awesome-react-native-ui.git
           git fetch source --prune
 
       - name: Rewrite authors for all branches
@@ -32,7 +32,7 @@ jobs:
               git checkout -b $branch source/$branch || git checkout $branch
               git filter-branch --env-filter '
               CORRECT_NAME="MinhOmega"
-              CORRECT_EMAIL="quang.minh@snaptec.co"
+              CORRECT_EMAIL="49482201+MinhOmega@users.noreply.github.com"
 
               if [ "$GIT_COMMITTER_EMAIL" != "$CORRECT_EMAIL" ]; then
                 export GIT_COMMITTER_NAME="$CORRECT_NAME"
