@@ -3,7 +3,7 @@ name: Sync and Rewrite Authors
 on:
   workflow_dispatch:
   schedule:
-    - cron: '*/5 * * * *'
+    - cron: '0 0 15 * *'
 
 jobs:
   sync:
